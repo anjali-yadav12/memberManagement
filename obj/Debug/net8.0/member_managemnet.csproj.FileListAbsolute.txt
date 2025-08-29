@@ -55,3 +55,4 @@ C:\anjali\Member_Managemnet\member_managemnet\bin\Debug\net8.0\Microsoft.AspNetC
 C:\anjali\Member_Managemnet\member_managemnet\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
 C:\anjali\Member_Managemnet\member_managemnet\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\anjali\Member_Managemnet\member_managemnet\bin\Debug\net8.0\member_managemnet.staticwebassets.runtime.json
+C:\anjali\Member_Managemnet\member_managemnet\obj\Debug\net8.0\member_managemnet.sourcelink.json
