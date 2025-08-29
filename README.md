@@ -82,3 +82,6 @@ Points display.
 
 Coupon redemption with remaining points display.
 
+**POSTMAN COLLECTION LINK**
+https://www.postman.com/anjaliray5973187-5761672/workspace/anjali-yadav-s-workspace/collection/48018407-a7ae08c2-3125-4092-8e34-863da3418e19?action=share&creator=48018407&active-environment=48018407-0e4cf8fc-aa04-4cbe-8d42-0fdb43747ea5
+
