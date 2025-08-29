@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redeem Points</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f9; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; }
+        h2 { text-align: center; }
+        input, select, button { width: 100%; padding: 10px; margin: 10px 0; }
+        #message { margin-top: 10px; font-weight: bold; }
+        #remainingPoints { margin-top: 5px; color: blue; }
+        .success { color: green; }
+        .error { color: red; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Redeem Points for Coupons</h2>
+        <label>Member ID:</label>
+        <input type="number" id="memberId" placeholder="Enter Member ID">
+
+        <label>Points to Redeem:</label>
+        <select id="pointsToRedeem">
+            <option value="500">500 Points = ₹50 Coupon</option>
+            <option value="1000">1000 Points = ₹100 Coupon</option>
+        </select>
+
+        <button onclick="redeemPoints()">Redeem</button>
+        <p id="message"></p>
+        <p id="remainingPoints" style="font-weight:bold;"></p>
+
+        <h3>Redeemed Coupons</h3>
+        <button onclick="loadCoupons()">Load Coupons</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>Coupon ID</th>
+                    <th>Points Redeemed</th>
+                    <th>Coupon Value</th>
+                    <th>Redeemed At</th>
+                </tr>
+            </thead>
+            <tbody id="couponList"></tbody>
+        </table>
+    </div>
+
+    <script>
+        const apiBase = "/api/redemption";
+
+        async function redeemPoints() {
+            const memberId = document.getElementById("memberId").value;
+            const pointsToRedeem = document.getElementById("pointsToRedeem").value;
+            const messageBox = document.getElementById("message");
+            const remainingPointsBox = document.getElementById("remainingPoints");
+
+            if (!memberId) {
+                messageBox.textContent = "Enter a valid Member ID.";
+                messageBox.className = "error";
+                remainingPointsBox.textContent = "";
+                return;
+            }
+
+            try {
+                const res = await fetch(`${apiBase}/redeem`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ memberId: parseInt(memberId), pointsToRedeem: parseInt(pointsToRedeem) })
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    messageBox.textContent = data.message;
+                    messageBox.className = "success";
+
+                    // Display remaining points
+                    remainingPointsBox.textContent = `Remaining Points: ${data.remainingPoints}`;
+
+                    loadCoupons();
+                } else {
+                    const err = await res.json();
+                    messageBox.textContent = err.message;
+                    messageBox.className = "error";
+                    remainingPointsBox.textContent = "";
+                }
+            } catch {
+                messageBox.textContent = "Network error.";
+                messageBox.className = "error";
+                remainingPointsBox.textContent = "";
+            }
+        }
+
+        async function loadCoupons() {
+            const memberId = document.getElementById("memberId").value;
+            if (!memberId) return;
+
+            const res = await fetch(`${apiBase}/member/${memberId}/coupons`);
+            if (res.ok) {
+                const data = await res.json();
+                const tbody = document.getElementById("couponList");
+                tbody.innerHTML = data.map(c => `
+                    <tr>
+                        <td>${c.couponID}</td>
+                        <td>${c.pointsRedeemed}</td>
+                        <td>₹${c.couponValue}</td>
+                        <td>${new Date(c.redeemedAt).toLocaleString()}</td>
+                    </tr>
+                `).join("");
+            }
+        }
+    </script>
+</body>
+</html>

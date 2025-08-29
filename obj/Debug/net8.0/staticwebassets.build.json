@@ -1,0 +1,77 @@
+{
+  "Version": 1,
+  "Hash": "ls8+TeUH9fVwqncJYobrlnJhBWa3wdXiNgTAAcWzK9Y=",
+  "Source": "member_managemnet",
+  "BasePath": "_content/member_managemnet",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "member_managemnet\\wwwroot",
+      "Source": "member_managemnet",
+      "ContentRoot": "C:\\anjali\\Member_Managemnet\\member_managemnet\\wwwroot\\",
+      "BasePath": "_content/member_managemnet",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\anjali\\Member_Managemnet\\member_managemnet\\wwwroot\\index.html",
+      "SourceId": "member_managemnet",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\anjali\\Member_Managemnet\\member_managemnet\\wwwroot\\",
+      "BasePath": "_content/member_managemnet",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\anjali\\Member_Managemnet\\member_managemnet\\wwwroot\\points.html",
+      "SourceId": "member_managemnet",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\anjali\\Member_Managemnet\\member_managemnet\\wwwroot\\",
+      "BasePath": "_content/member_managemnet",
+      "RelativePath": "points.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\points.html"
+    },
+    {
+      "Identity": "C:\\anjali\\Member_Managemnet\\member_managemnet\\wwwroot\\redeem.html",
+      "SourceId": "member_managemnet",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\anjali\\Member_Managemnet\\member_managemnet\\wwwroot\\",
+      "BasePath": "_content/member_managemnet",
+      "RelativePath": "redeem.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\redeem.html"
+    }
+  ]
+}

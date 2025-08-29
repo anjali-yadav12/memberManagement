@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Points Management</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .card { padding: 15px; margin: 10px 0; border: 1px solid #ddd; border-radius: 6px; background: #f9f9f9; }
+        input, button { margin: 5px 0; padding: 8px; width: 100%; }
+        button { background: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background: #45a049; }
+        .notification {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success { background-color: #4CAF50; color: white; }
+        .error { background-color: #f44336; color: white; }
+    </style>
+</head>
+<body>
+    <h2>Member Points System</h2>
+
+    <div id="notification" class="notification"></div>
+
+    <div class="card">
+        <h3>Add Points</h3>
+        <input type="number" id="memberId" placeholder="Member ID">
+        <input type="number" id="purchaseAmount" placeholder="Purchase Amount (₹)">
+        <button onclick="addPoints()">Add Points</button>
+    </div>
+
+    <div class="card">
+        <h3>View Total Points</h3>
+        <input type="number" id="viewMemberId" placeholder="Member ID">
+        <button onclick="viewPoints()">Get Points</button>
+        <pre id="viewResult"></pre>
+    </div>
+
+    <script>
+        const apiBaseUrl = "http://localhost:5256/api/points"; 
+
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.innerText = message;
+            notification.className = `notification ${type}`;
+            notification.style.display = 'block';
+            setTimeout(() => notification.style.display = 'none', 3000);
+        }
+
+        async function addPoints() {
+            const memberId = document.getElementById('memberId').value;
+            const purchaseAmount = document.getElementById('purchaseAmount').value;
+
+            try {
+                const response = await fetch(`${apiBaseUrl}/add`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ memberID: parseInt(memberId), purchaseAmount: parseFloat(purchaseAmount) })
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    showNotification(errorData.message || 'Error adding points', 'error');
+                    return;
+                }
+
+                const data = await response.json();
+                showNotification(`Points added successfully! Total Points: ${data.totalPoints}`, 'success');
+            } catch (error) {
+                showNotification('Network error. Please try again.', 'error');
+            }
+        }
+
+        async function viewPoints() {
+            const memberId = document.getElementById('viewMemberId').value;
+            try {
+                const response = await fetch(`${apiBaseUrl}/${memberId}`);
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    showNotification(errorData.message || 'Error fetching points', 'error');
+                    return;
+                }
+
+                const data = await response.json();
+                document.getElementById('viewResult').innerText = JSON.stringify(data, null, 2);
+                showNotification('Points fetched successfully!', 'success');
+            } catch (error) {
+                showNotification('Network error. Please try again.', 'error');
+            }
+        }
+    </script>
+</body>
+</html>

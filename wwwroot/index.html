@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Member API Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            color: #333;
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+            color: #4a90e2;
+        }
+        #notification {
+            display: none;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            background: #4a90e2;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .tab {
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+        .tab:hover {
+            background: #357abd;
+            border-radius: 4px;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            display: none;
+        }
+        input {
+            width: 95%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: #357abd;
+        }
+        pre {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+    <script>
+        let token = '';
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.innerText = message;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        async function registerMember() {
+            const response = await fetch('http://localhost:5256/api/Member/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: document.getElementById('name').value,
+                    mobileNumber: document.getElementById('mobileNumber').value
+                })
+            });
+            const data = await response.json();
+            showNotification("User Registered Successfully!");
+            document.getElementById('output').innerText = JSON.stringify(data, null, 2);
+            showSection('response');
+        }
+
+        async function verifyOtp() {
+            const response = await fetch('http://localhost:5256/api/Member/verify-otp', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    mobileNumber: document.getElementById('mobileNumber').value,
+                    otp: document.getElementById('otp').value
+                })
+            });
+            const data = await response.json();
+            token = data.token;
+            showNotification("Verification Complete!");
+            document.getElementById('output').innerText = "Token Received:\n" + token;
+            showSection('response');
+        }
+
+        async function getProfile() {
+            const id = document.getElementById('memberId').value;
+            const response = await fetch(`http://localhost:5256/api/Member/profile/${id}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const data = await response.json();
+            showNotification("Profile Response Ready!");
+            document.getElementById('output').innerText = JSON.stringify(data, null, 2);
+            showSection('response');
+        }
+    </script>
+</head>
+<body onload="showSection('register')">
+    <h1>Member API Client</h1>
+    <div id="notification"></div>
+
+    <div class="tabs">
+        <div class="tab" onclick="showSection('register')">Register</div>
+        <div class="tab" onclick="showSection('verify')">Verify OTP</div>
+        <div class="tab" onclick="showSection('profile')">Get Profile</div>
+        <div class="tab" onclick="showSection('response')">API Response</div>
+    </div>
+
+    <div id="register" class="section">
+        <h3>Register Member</h3>
+        <input id="name" placeholder="Enter Name">
+        <input id="mobileNumber" placeholder="Enter Mobile Number">
+        <button onclick="registerMember()">Register</button>
+    </div>
+
+    <div id="verify" class="section">
+        <h3>Verify OTP</h3>
+        <input id="otp" placeholder="Enter OTP">
+        <button onclick="verifyOtp()">Verify OTP</button>
+    </div>
+
+    <div id="profile" class="section">
+        <h3>Get Member Profile</h3>
+        <input id="memberId" placeholder="Enter Member ID">
+        <button onclick="getProfile()">Get Profile</button>
+    </div>
+
+    <div id="response" class="section">
+        <h3>API Response</h3>
+        <pre id="output"></pre>
+    </div>
+</body>
+</html>
