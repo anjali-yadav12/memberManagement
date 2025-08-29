@@ -1,0 +1,629 @@
+{
+	"info": {
+		"_postman_id": "a7ae08c2-3125-4092-8e34-863da3418e19",
+		"name": "Member API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48018407",
+		"_collection_link": "https://anjaliray5973187-5761672.postman.co/workspace/2478dc80-eb38-49d8-8119-97af7a5cf2e5/collection/48018407-a7ae08c2-3125-4092-8e34-863da3418e19?action=share&source=collection_link&creator=48018407"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "Member",
+					"item": [
+						{
+							"name": "register",
+							"item": [
+								{
+									"name": "/api/Member/register",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"mobileNumber\": \"string\",\n  \"name\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Member/register",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Member",
+												"register"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"mobileNumber\": \"string\",\n  \"name\": \"string\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:5256/api/Member/register",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "5256",
+													"path": [
+														"api",
+														"Member",
+														"register"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "verify-otp",
+							"item": [
+								{
+									"name": "/api/Member/verify-otp",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"memberID\": 2282,\n  \"otp\": \"string\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Member/verify-otp",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Member",
+												"verify-otp"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"memberID\": 2282,\n  \"otp\": \"string\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:5256/api/Member/verify-otp",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "5256",
+													"path": [
+														"api",
+														"Member",
+														"verify-otp"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "profile",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "/api/Member/profile/:id",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/Member/profile/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"Member",
+														"profile",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "8537",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Authorization",
+																"value": "<API Key>",
+																"description": "Added as a part of security scheme: apikey"
+															}
+														],
+														"url": {
+															"raw": "http://localhost:5256/api/Member/profile/:id",
+															"protocol": "http",
+															"host": [
+																"localhost"
+															],
+															"port": "5256",
+															"path": [
+																"api",
+																"Member",
+																"profile",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Points",
+					"item": [
+						{
+							"name": "add",
+							"item": [
+								{
+									"name": "/api/Points/add",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"memberID\": 4449,\n  \"purchaseAmount\": 703.0500180442334\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Points/add",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Points",
+												"add"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"memberID\": 4449,\n  \"purchaseAmount\": 703.0500180442334\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:5256/api/Points/add",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "5256",
+													"path": [
+														"api",
+														"Points",
+														"add"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "{memberId}",
+							"item": [
+								{
+									"name": "/api/Points/:memberId",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Points/:memberId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Points",
+												":memberId"
+											],
+											"variable": [
+												{
+													"key": "memberId",
+													"value": "8537",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"url": {
+													"raw": "http://localhost:5256/api/Points/:memberId",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "5256",
+													"path": [
+														"api",
+														"Points",
+														":memberId"
+													],
+													"variable": [
+														{
+															"key": "memberId"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Redemption",
+					"item": [
+						{
+							"name": "redeem",
+							"item": [
+								{
+									"name": "/api/Redemption/redeem",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"memberId\": 63,\n  \"pointsToRedeem\": 7198\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Redemption/redeem",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Redemption",
+												"redeem"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Authorization",
+														"value": "<API Key>",
+														"description": "Added as a part of security scheme: apikey"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"memberId\": 63,\n  \"pointsToRedeem\": 7198\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:5256/api/Redemption/redeem",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "5256",
+													"path": [
+														"api",
+														"Redemption",
+														"redeem"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "member",
+							"item": [
+								{
+									"name": "{memberId}",
+									"item": [
+										{
+											"name": "coupons",
+											"item": [
+												{
+													"name": "/api/Redemption/member/:memberId/coupons",
+													"request": {
+														"method": "GET",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/Redemption/member/:memberId/coupons",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"Redemption",
+																"member",
+																":memberId",
+																"coupons"
+															],
+															"variable": [
+																{
+																	"key": "memberId",
+																	"value": "8537",
+																	"description": "(Required) "
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Authorization",
+																		"value": "<API Key>",
+																		"description": "Added as a part of security scheme: apikey"
+																	}
+																],
+																"url": {
+																	"raw": "http://localhost:5256/api/Redemption/member/:memberId/coupons",
+																	"protocol": "http",
+																	"host": [
+																		"localhost"
+																	],
+																	"port": "5256",
+																	"path": [
+																		"api",
+																		"Redemption",
+																		"member",
+																		":memberId",
+																		"coupons"
+																	],
+																	"variable": [
+																		{
+																			"key": "memberId"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "text",
+															"header": [],
+															"cookie": [],
+															"body": ""
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{apiKey}}",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}
